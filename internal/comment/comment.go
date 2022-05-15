@@ -44,7 +44,7 @@ func (s *Service) GetComment(ctx context.Context, id string) (Comment, error) {
 	return cmt, nil
 }
 
-func (s *Service) UpdateComment(ctx context.Context, id string) error {
+func (s *Service) UpdateComment(ctx context.Context, cmt Comment) error {
 	return ErrNotImplemented
 }
 
