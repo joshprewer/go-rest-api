@@ -1,11 +1,11 @@
 package main
 
 import (
-	"context"
 	"fmt"
 
 	"github.com/joshprewer/go-rest-api/internal/comment"
 	"github.com/joshprewer/go-rest-api/internal/db"
+	transportHttp "github.com/joshprewer/go-rest-api/internal/transpot/http"
 )
 
 // Setup app layers
@@ -25,10 +25,10 @@ func Run() error {
 	}
 
 	cmtService := comment.NewService(db)
-	fmt.Println(cmtService.GetComment(
-		context.Background(),
-		"b2059fe8-f11d-41e7-9b12-2250642ef27d",
-	))
+	httpHandler := transportHttp.NewHandler(cmtService)
+	if err := httpHandler.Serve(); err != nil {
+		return err
+	}
 
 	return nil
 }
