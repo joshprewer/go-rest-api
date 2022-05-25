@@ -5,7 +5,7 @@ import (
 
 	"github.com/joshprewer/go-rest-api/internal/comment"
 	"github.com/joshprewer/go-rest-api/internal/db"
-	transportHttp "github.com/joshprewer/go-rest-api/internal/transpot/http"
+	transportHttp "github.com/joshprewer/go-rest-api/internal/transport/http"
 )
 
 // Setup app layers
