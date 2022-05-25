@@ -81,7 +81,7 @@ func (d *Database) DeleteComment(ctx context.Context, id string) error {
 	)
 
 	if err != nil {
-		fmt.Errorf("failed to delete comment: %w", err)
+		return fmt.Errorf("failed to delete comment: %w", err)
 	}
 
 	return nil
@@ -98,8 +98,8 @@ func (d *Database) UpdateComment(ctx context.Context, id string, cmt comment.Com
 	rows, err := d.Client.NamedQueryContext(
 		ctx,
 		`UPDATE comments SET
-		slug = :slug
-		author = :author
+		slug = :slug,
+		author = :author,
 		body = :body
 		WHERE id = :id`,
 		cmtRow,
